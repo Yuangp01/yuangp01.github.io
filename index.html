@@ -1,240 +1,949 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yuan Gonzalez — Data Analyst & BI Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<meta name="description" content="Yuan Gonzalez — Data Analyst and BI Specialist focused on Power BI, SQL, Python, DAX and data-driven decision making.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #000000;
-    --bg-card: #161618;
-    --bg-glass: rgba(255,255,255,0.05);
-    --border: rgba(255,255,255,0.08);
-    --border-hover: rgba(41,151,255,0.6);
-    --text: #f5f5f7;
-    --muted: #86868b;
-    --accent: #2997ff;
-    --radius-card: 20px;
-    --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Inter, Roboto, sans-serif;
+:root {
+  --bg: #f5f5f7;
+  --surface: rgba(255,255,255,.78);
+  --white: #fff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --line: #d2d2d7;
+  --blue: #0071e3;
+  --blue-dark: #0066cc;
+  --shadow: 0 20px 60px rgba(0,0,0,.08);
+  --shadow-hover: 0 30px 80px rgba(0,0,0,.12);
+  --radius: 28px;
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display",
+               "SF Pro Text", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ---------- NAV ---------- */
+
+nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 64px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background: rgba(245,245,247,.78);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.nav-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.4px;
+}
+
+.logo span { color: var(--blue); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: .2s ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-contact {
+  color: #fff !important;
+  background: var(--blue);
+  padding: 9px 17px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.nav-contact:hover {
+  background: var(--blue-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  min-height: 820px;
+  padding: 160px 24px 110px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(0,113,227,.12), transparent 34%),
+    linear-gradient(180deg, #fff 0%, #f5f5f7 75%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  right: -300px;
+  top: 220px;
+  border-radius: 50%;
+  background: rgba(90, 200, 250, .10);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero-content {
+  width: min(1000px, 100%);
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 999px;
+  background: rgba(255,255,255,.7);
+  box-shadow: 0 5px 20px rgba(0,0,0,.04);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.availability-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34c759;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: clamp(54px, 8vw, 104px);
+  line-height: .98;
+  letter-spacing: -6px;
+  font-weight: 800;
+}
+
+.hero h1 .gradient {
+  background: linear-gradient(90deg, #0071e3, #00a3ff 45%, #34c759);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-copy {
+  max-width: 690px;
+  margin: 30px auto 0;
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.55;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: .25s ease;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,113,227,.22);
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0,113,227,.28);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,.8);
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,.09);
+}
+
+.btn-secondary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------- VALUE STRIP ---------- */
+
+.value-strip {
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,.06);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.value {
+  min-height: 135px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid rgba(0,0,0,.07);
+}
+
+.value:last-child { border-right: 0; }
+
+.value strong {
+  font-size: 18px;
+  letter-spacing: -.4px;
+}
+
+.value span {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ---------- SECTIONS ---------- */
+
+section {
+  padding: 120px 0;
+}
+
+.section-kicker {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  max-width: 760px;
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.02;
+  letter-spacing: -4px;
+  font-weight: 800;
+}
+
+.section-sub {
+  max-width: 650px;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* ---------- PROJECTS ---------- */
+
+.project-stack {
+  margin-top: 60px;
+  display: grid;
+  gap: 30px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.07);
+  box-shadow: var(--shadow);
+  transition: .35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, #0071e3, #5ac8fa, #34c759);
+}
+
+.project-top {
+  padding: 52px 56px 38px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.project-number {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.project-title {
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -1.8px;
+  line-height: 1.08;
+  font-weight: 750;
+}
+
+.project-desc {
+  max-width: 680px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.project-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: .2s ease;
+}
+
+.project-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+}
+
+.project-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #e8e8ed;
+}
+
+.detail {
+  padding: 30px 36px;
+  border-right: 1px solid #e8e8ed;
+  border-bottom: 1px solid #e8e8ed;
+}
+
+.detail:nth-child(2n) { border-right: 0; }
+.detail:nth-last-child(-n+2) { border-bottom: 0; }
+
+.detail h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.detail p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ---------- SKILLS ---------- */
+
+.skills-section {
+  background: #fff;
+}
+
+.skills-layout {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.skill {
+  padding: 34px;
+  border-radius: 22px;
+  background: #f5f5f7;
+  border: 1px solid rgba(0,0,0,.06);
+  transition: .25s ease;
+}
+
+.skill:hover {
+  background: #fff;
+  box-shadow: 0 15px 45px rgba(0,0,0,.08);
+  transform: translateY(-3px);
+}
+
+.skill-label {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 11px;
+}
+
+.skill h3 {
+  font-size: 21px;
+  letter-spacing: -.6px;
+  margin-bottom: 9px;
+}
+
+.skill p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.tech-row {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.tech {
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: #f5f5f7;
+  border: 1px solid #e3e3e8;
+  color: #424245;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contact-section {
+  padding: 120px 0 90px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0,113,227,.10), transparent 38%),
+    #f5f5f7;
+}
+
+.contact-card {
+  max-width: 900px;
+  margin: auto;
+  padding: 82px 40px;
+  border-radius: 34px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.07);
+  box-shadow: var(--shadow);
+}
+
+.contact-card h2 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -4px;
+  font-weight: 800;
+}
+
+.contact-card p {
+  max-width: 620px;
+  margin: 22px auto 34px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 19px;
+  border-radius: 999px;
+  background: #f5f5f7;
+  border: 1px solid #e3e3e8;
+  font-size: 13px;
+  font-weight: 600;
+  transition: .2s ease;
+}
+
+.contact-link:hover {
+  background: #fff;
+  border-color: #c7c7cc;
+  transform: translateY(-2px);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  background: #fff;
+  border-top: 1px solid #e5e5ea;
+  padding: 28px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 22px;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+/* ---------- ANIMATION ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 800px) {
+  .container,
+  .nav-inner { width: min(100% - 32px, var(--max)); }
+
+  .nav-links { gap: 15px; }
+  .nav-links li:not(:last-child) { display: none; }
+
+  .hero {
+    min-height: 740px;
+    padding-top: 135px;
   }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  .ambient { position: fixed; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse at center, rgba(41,151,255,0.08) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.72); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; }
-  .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: var(--transition); }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta { background: var(--accent) !important; color: white !important; padding: 8px 18px; border-radius: 980px; font-weight: 500 !important; }
-  header { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 980px; padding: 6px 16px; font-size: 12px; color: var(--muted); margin-bottom: 32px; backdrop-filter: blur(12px); }
-  .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #34c759; animation: pulse-dot 2s infinite; }
-  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.8)} }
-  .hero-title { font-size: clamp(48px,8vw,96px); font-weight: 700; line-height: 1.0; letter-spacing: -3px; margin-bottom: 24px; background: linear-gradient(180deg,#f5f5f7 60%,rgba(245,245,247,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-title .accent-word { background: linear-gradient(135deg,#2997ff,#30d158); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero-sub { font-size: clamp(17px,2.5vw,21px); color: var(--muted); font-weight: 300; line-height: 1.6; max-width: 520px; margin: 0 auto 48px; }
-  .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; border-radius: 980px; font-size: 15px; font-weight: 500; text-decoration: none; transition: var(--transition); }
-  .btn-primary { background: var(--accent); color: white; }
-  .btn-primary:hover { background: #0077ed; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(41,151,255,0.35); }
-  .btn-secondary { background: rgba(255,255,255,0.08); color: var(--text); border: 1px solid var(--border); }
-  .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-  .stats-row { position: relative; z-index: 1; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); }
-  .stat-item { background: var(--bg); padding: 32px; text-align: center; transition: var(--transition); }
-  .stat-item:hover { background: var(--bg-card); }
-  .stat-number { font-size: 36px; font-weight: 700; letter-spacing: -1.5px; line-height: 1; margin-bottom: 6px; }
-  .stat-number span { color: var(--accent); }
-  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
-  main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 100px 0; }
-  .section-eyebrow { font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-  .section-title { font-size: clamp(32px,5vw,52px); font-weight: 700; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; }
-  .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.7; margin-bottom: 56px; }
-  .project-hero-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-card); overflow: hidden; transition: var(--transition); }
-  .project-hero-card:hover { border-color: var(--border-hover); box-shadow: 0 0 0 1px var(--border-hover),0 24px 48px rgba(0,0,0,0.4); transform: translateY(-4px); }
-  .project-hero-top { padding: 48px 48px 0; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
-  .project-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-  .tag { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 5px 12px; border-radius: 980px; border: 1px solid var(--border); color: var(--muted); background: var(--bg-glass); }
-  .tag-accent { border-color: rgba(41,151,255,0.4); color: var(--accent); background: rgba(41,151,255,0.08); }
-  .project-hero-title { font-size: 30px; font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; }
-  .project-hero-desc { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 580px; }
-  .project-live-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: white; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 980px; text-decoration: none; white-space: nowrap; transition: var(--transition); flex-shrink: 0; }
-  .project-live-btn:hover { background: #0077ed; box-shadow: 0 4px 16px rgba(41,151,255,0.4); }
-  .project-features-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); margin-top: 40px; }
-  .feature-cell { background: var(--bg-card); padding: 28px 32px; transition: var(--transition); }
-  .feature-cell:hover { background: #1a1a1c; }
-  .feature-cell-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-  .feature-cell-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
-  .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-  .skill-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: var(--transition); position: relative; overflow: hidden; }
-  .skill-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0; transition:var(--transition); }
-  .skill-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
-  .skill-card:hover::before { opacity: 1; }
-  .skill-card-level { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-  .skill-card-title { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 8px; }
-  .skill-card-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
-  .tech-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
-  .tech-badge { display: flex; align-items: center; gap: 8px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 980px; padding: 8px 18px; font-size: 13px; color: var(--muted); font-weight: 500; transition: var(--transition); }
-  .tech-badge:hover { border-color: rgba(255,255,255,0.2); color: var(--text); transform: translateY(-2px); }
-  .tech-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .contact-section { position: relative; z-index: 1; text-align: center; padding: 60px 24px 120px; }
-  .contact-card { max-width: 680px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: 28px; padding: 64px 48px; position: relative; overflow: hidden; }
-  .contact-card::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:200px; height:1px; background:linear-gradient(90deg,transparent,var(--accent),transparent); }
-  .contact-card-title { font-size: clamp(28px,4vw,40px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px; }
-  .contact-card-sub { font-size: 16px; color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
-  .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .contact-link { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 980px; padding: 12px 24px; font-size: 14px; color: var(--text); text-decoration: none; font-weight: 500; transition: var(--transition); }
-  .contact-link:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
-  footer a { color: var(--muted); text-decoration: none; transition: var(--transition); }
-  footer a:hover { color: var(--text); }
-  .footer-links { display: flex; gap: 24px; }
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  @media(max-width:768px) {
-    nav{padding:0 20px} .nav-links{display:none}
-    .stats-row{grid-template-columns:repeat(2,1fr)}
-    .project-hero-top{grid-template-columns:1fr}
-    .project-features-grid{grid-template-columns:1fr}
-    .skills-grid{grid-template-columns:1fr}
-    .contact-card{padding:40px 24px}
-    footer{flex-direction:column;gap:16px;text-align:center}
+
+  .hero h1 {
+    letter-spacing: -3.5px;
+    font-size: clamp(48px, 14vw, 76px);
   }
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation-duration:0ms!important;transition-duration:0ms!important}}
+
+  .value-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .value:nth-child(2) { border-right: 0; }
+  .value:nth-child(-n+2) { border-bottom: 1px solid rgba(0,0,0,.07); }
+
+  section { padding: 85px 0; }
+
+  .section-title { letter-spacing: -2.5px; }
+
+  .project-top {
+    padding: 38px 28px 30px;
+    flex-direction: column;
+  }
+
+  .project-details,
+  .skills-layout { grid-template-columns: 1fr; }
+
+  .detail {
+    border-right: 0;
+    border-bottom: 1px solid #e8e8ed !important;
+  }
+
+  .detail:last-child { border-bottom: 0 !important; }
+
+  .skill { padding: 28px; }
+
+  .contact-card { padding: 60px 24px; }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="ambient"></div>
 
 <nav>
-  <a href="#" class="nav-logo">Yuan <span>Gonzalez</span></a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a href="#" class="logo">Yuan <span>Gonzalez</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact" class="nav-contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
-<header>
-  <div class="hero-badge"><span class="hero-badge-dot"></span>Available for new opportunities</div>
-  <p style="font-size:clamp(16px,2vw,20px);color:var(--muted);font-weight:300;margin-bottom:12px;letter-spacing:0.2px;">Hi, I'm Yuan Gonzalez.</p>
-  <h1 class="hero-title">Data Analyst &<br/><span class="accent-word">BI Specialist.</span></h1>
-  <p class="hero-sub">I build investigative analytics platforms that turn complex datasets into clear, actionable decisions.</p>
-  <div class="hero-ctas">
-    <a href="#work" class="btn btn-primary">View My Work</a>
-    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+<header class="hero">
+  <div class="hero-content">
+    <div class="availability">
+      <span class="availability-dot"></span>
+      Available for new opportunities
+    </div>
+
+    <div class="eyebrow">Data Analytics · Business Intelligence</div>
+
+    <h1>
+      Turning complex data<br>
+      into <span class="gradient">clear decisions.</span>
+    </h1>
+
+    <p class="hero-copy">
+      Hi, I'm Yuan Gonzalez. I build analytical solutions with
+      Power BI, SQL, Python and DAX that make data easier to understand
+      and easier to act on.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">Explore my work</a>
+      <a href="#contact" class="btn btn-secondary">Let's connect</a>
+    </div>
   </div>
 </header>
 
-<div class="stats-row">
-  <div class="stat-item"><div class="stat-number">2<span>+</span></div><div class="stat-label">Projects Built</div></div>
-  <div class="stat-item"><div class="stat-number">5<span>+</span></div><div class="stat-label">Core Skills</div></div>
-  <div class="stat-item"><div class="stat-number"><span>#</span>1</div><div class="stat-label">Power BI Focus</div></div>
-  <div class="stat-item"><div class="stat-number">FL</div><div class="stat-label">Based in Florida</div></div>
+<div class="value-strip">
+  <div class="value-grid">
+    <div class="value">
+      <strong>Power BI & DAX</strong>
+      <span>Business Intelligence</span>
+    </div>
+    <div class="value">
+      <strong>SQL & Modeling</strong>
+      <span>Data Architecture</span>
+    </div>
+    <div class="value">
+      <strong>Python</strong>
+      <span>Analysis & Automation</span>
+    </div>
+    <div class="value">
+      <strong>Florida</strong>
+      <span>Open to opportunities</span>
+    </div>
+  </div>
 </div>
 
 <main>
-  <section id="work">
-    <div class="section-eyebrow reveal">Featured Project</div>
-    <h2 class="section-title reveal">Built for real<br/>investigators.</h2>
-    <p class="section-sub reveal">A production-grade Power BI platform designed around actual law enforcement case workflows.</p>
-    <div class="project-hero-card reveal">
-      <div class="project-hero-top">
-        <div>
-          <h3 class="project-hero-title">Crime LA Investigation Analytics</h3>
-          <p class="project-hero-desc">Select a case. Identify its offenses. Surface related incidents by geography, time, and offense similarity — driven by advanced DAX logic and disconnected selectors on real LAPD crime data.</p>
-        </div>
-        <a href="https://app.powerbi.com/links/YOUR_LINK_HERE" class="project-live-btn" target="_blank">↗ Live Dashboard</a>
-      </div>
-      <div class="project-features-grid">
-        <div class="feature-cell"><div class="feature-cell-title">Disconnected DAX Selectors</div><div class="feature-cell-desc">Case and offense selectors operate independently from the main model, enabling flexible investigator-driven workflows.</div></div>
-        <div class="feature-cell"><div class="feature-cell-title">Geographic Radius Filtering</div><div class="feature-cell-desc">Haversine distance calculations surface incidents within 0–5+ mile radius, rendered on Azure Maps.</div></div>
-        <div class="feature-cell"><div class="feature-cell-title">Temporal Analysis Windows</div><div class="feature-cell-desc">±60 day investigation windows identify patterns around case dates in the same time frame.</div></div>
-        <div class="feature-cell"><div class="feature-cell-title">Many-to-Many Offense Matching</div><div class="feature-cell-desc">INTERSECT logic matches incidents sharing at least one offense, correctly handling multiple offenses per incident.</div></div>
-      </div>
-    </div>
-  </section>
 
-  <section id="healthcare">
-    <div class="section-eyebrow reveal">Project 02</div>
-    <h2 class="section-title reveal">Healthcare data,<br/>made readable.</h2>
-    <p class="section-sub reveal">A Python and SQL-driven analytics pipeline transforming raw healthcare data into actionable clinical and operational insights.</p>
-    <div class="project-hero-card reveal">
-      <div class="project-hero-top">
-        <div>
-          <h3 class="project-hero-title">Healthcare Analytics Dashboard</h3>
-          <p class="project-hero-desc">End-to-end healthcare data analysis project combining SQL data extraction, Python processing, and visual analytics to identify patient trends, operational bottlenecks, and clinical patterns across departments.</p>
-        </div>
-        <a href="#" class="project-live-btn" target="_blank">↗ View Project</a>
-      </div>
-      <div class="project-features-grid">
-        <div class="feature-cell"><div class="feature-cell-title">SQL Data Pipeline</div><div class="feature-cell-desc">Complex joins, window functions, and CTEs to extract and aggregate patient records, admissions, and clinical outcomes across multiple tables.</div></div>
-        <div class="feature-cell"><div class="feature-cell-title">Python Analysis</div><div class="feature-cell-desc">Pandas and NumPy for data cleaning, transformation, and exploratory analysis. Identifying trends in patient demographics and treatment patterns.</div></div>
-        <div class="feature-cell"><div class="feature-cell-title">Operational Metrics</div><div class="feature-cell-desc">KPIs tracking patient wait times, readmission rates, department throughput, and resource utilization across care facilities.</div></div>
-        <div class="feature-cell"><div class="feature-cell-title">Data Visualization</div><div class="feature-cell-desc">Interactive charts and dashboards translating complex clinical data into clear visual narratives for both medical and administrative stakeholders.</div></div>
-      </div>
-    </div>
-  </section>
+<section id="work">
+  <div class="container">
+    <div class="section-kicker reveal">Selected Work</div>
+    <h2 class="section-title reveal">Projects built to<br>solve real problems.</h2>
+    <p class="section-sub reveal">
+      A selection of analytics projects combining data modeling,
+      advanced DAX, SQL, Python and interactive visualization.
+    </p>
 
-  <section id="skills">
-    <div class="section-eyebrow reveal">Skills & Expertise</div>
-    <h2 class="section-title reveal">Correct architecture.<br/>Not quick fixes.</h2>
-    <p class="section-sub reveal">Proper data models, scalable DAX logic, and user-centric design over patching problems with workarounds.</p>
-    <div class="skills-grid">
-      <div class="skill-card reveal"><div class="skill-card-level">Strong</div><div class="skill-card-title">Power BI & DAX</div><div class="skill-card-desc">Complex measures, disconnected tables, many-to-many relationships, CALCULATE, REMOVEFILTERS, INTERSECT, virtual tables</div></div>
-      <div class="skill-card reveal"><div class="skill-card-level">Strong</div><div class="skill-card-title">SQL & Data Modeling</div><div class="skill-card-desc">Schema design, window functions, CTEs, query optimization, star schema, relational modeling, normalization</div></div>
-      <div class="skill-card reveal"><div class="skill-card-level">Strong</div><div class="skill-card-title">Geographic Analytics</div><div class="skill-card-desc">Haversine calculations, Azure Maps integration, spatial filtering, coordinate-based incident correlation</div></div>
-      <div class="skill-card reveal"><div class="skill-card-level">Intermediate</div><div class="skill-card-title">Python</div><div class="skill-card-desc">Pandas, NumPy, data cleaning, exploratory analysis, automation scripting</div></div>
-      <div class="skill-card reveal"><div class="skill-card-level">Intermediate</div><div class="skill-card-title">Azure & Cloud</div><div class="skill-card-desc">Power BI Service, Azure Maps, cloud-hosted solutions, data architecture, access management</div></div>
-      <div class="skill-card reveal"><div class="skill-card-level">Intermediate</div><div class="skill-card-title">Power Query & Excel</div><div class="skill-card-desc">M language, ETL logic, data transformation, advanced formulas, pivot tables</div></div>
+    <div class="project-stack">
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div>
+            <div class="project-number">Project 01 · Power BI</div>
+            <h3 class="project-title">Crime LA Investigation Analytics</h3>
+            <p class="project-desc">
+              An investigative Power BI platform built around real law-enforcement
+              workflows. Investigators can select a case, identify its offenses,
+              and surface related incidents by geography, time and offense similarity.
+            </p>
+          </div>
+
+          <a href="https://app.powerbi.com/links/YOUR_LINK_HERE"
+             class="project-btn" target="_blank" rel="noopener">
+            Live dashboard ↗
+          </a>
+        </div>
+
+        <div class="project-details">
+          <div class="detail">
+            <h4>Advanced DAX</h4>
+            <p>
+              Disconnected selectors, virtual tables, CALCULATE,
+              REMOVEFILTERS and INTERSECT logic.
+            </p>
+          </div>
+
+          <div class="detail">
+            <h4>Geographic Analytics</h4>
+            <p>
+              Haversine distance calculations surface incidents
+              inside investigator-defined geographic radii.
+            </p>
+          </div>
+
+          <div class="detail">
+            <h4>Temporal Analysis</h4>
+            <p>
+              ±60-day investigation windows identify incidents
+              occurring around the selected case date.
+            </p>
+          </div>
+
+          <div class="detail">
+            <h4>Many-to-Many Matching</h4>
+            <p>
+              Offense matching correctly handles incidents
+              associated with multiple offenses.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div>
+            <div class="project-number">Project 02 · SQL + Python + Power BI</div>
+            <h3 class="project-title">Healthcare Analytics Dashboard</h3>
+            <p class="project-desc">
+              An end-to-end healthcare analytics pipeline transforming raw
+              healthcare data into operational and clinical insights using SQL,
+              Python and interactive visualization.
+            </p>
+          </div>
+
+          <a href="#"
+             class="project-btn">
+            View project ↗
+          </a>
+        </div>
+
+        <div class="project-details">
+          <div class="detail">
+            <h4>SQL Data Pipeline</h4>
+            <p>
+              Joins, CTEs and window functions extract and aggregate
+              patient, admission and clinical records.
+            </p>
+          </div>
+
+          <div class="detail">
+            <h4>Python Analysis</h4>
+            <p>
+              Pandas and NumPy support cleaning, transformation
+              and exploratory analysis.
+            </p>
+          </div>
+
+          <div class="detail">
+            <h4>Operational Metrics</h4>
+            <p>
+              KPIs analyze patient wait times, readmissions,
+              department throughput and resource utilization.
+            </p>
+          </div>
+
+          <div class="detail">
+            <h4>Data Visualization</h4>
+            <p>
+              Interactive dashboards translate complex healthcare
+              data into clear stakeholder-facing narratives.
+            </p>
+          </div>
+        </div>
+      </article>
+
     </div>
-    <div class="tech-badges reveal">
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Power BI</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>DAX</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>SQL</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Power Query</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Azure Maps</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Python</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Data Modeling</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Geographic Analytics</div>
-      <div class="tech-badge"><span class="tech-badge-dot"></span>Git</div>
+  </div>
+</section>
+
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="section-kicker reveal">Skills & Expertise</div>
+    <h2 class="section-title reveal">Strong fundamentals.<br>Clean solutions.</h2>
+    <p class="section-sub reveal">
+      I focus on building analytical solutions that are understandable,
+      scalable and useful to the people making decisions.
+    </p>
+
+    <div class="skills-layout">
+
+      <div class="skill reveal">
+        <div class="skill-label">Core</div>
+        <h3>Power BI & DAX</h3>
+        <p>
+          Complex measures, disconnected tables, many-to-many relationships,
+          virtual tables, CALCULATE, REMOVEFILTERS and INTERSECT.
+        </p>
+      </div>
+
+      <div class="skill reveal">
+        <div class="skill-label">Core</div>
+        <h3>SQL & Data Modeling</h3>
+        <p>
+          Relational modeling, star schema concepts, CTEs, window functions,
+          joins, normalization and analytical query design.
+        </p>
+      </div>
+
+      <div class="skill reveal">
+        <div class="skill-label">Core</div>
+        <h3>Python</h3>
+        <p>
+          Pandas, NumPy, data cleaning, exploratory analysis,
+          transformation and automation scripting.
+        </p>
+      </div>
+
+      <div class="skill reveal">
+        <div class="skill-label">Analytics</div>
+        <h3>Geographic Analytics</h3>
+        <p>
+          Haversine calculations, coordinate-based filtering,
+          spatial correlation and Azure Maps integration.
+        </p>
+      </div>
+
+      <div class="skill reveal">
+        <div class="skill-label">Analytics</div>
+        <h3>Power Query & Excel</h3>
+        <p>
+          M language, ETL logic, data transformation, advanced
+          formulas and pivot-table analysis.
+        </p>
+      </div>
+
+      <div class="skill reveal">
+        <div class="skill-label">Cloud</div>
+        <h3>Azure & Cloud</h3>
+        <p>
+          Power BI Service, Azure Maps, cloud-hosted solutions,
+          data architecture and access management.
+        </p>
+      </div>
+
     </div>
-  </section>
+
+    <div class="tech-row reveal">
+      <span class="tech">Power BI</span>
+      <span class="tech">DAX</span>
+      <span class="tech">SQL</span>
+      <span class="tech">Python</span>
+      <span class="tech">Pandas</span>
+      <span class="tech">NumPy</span>
+      <span class="tech">Power Query</span>
+      <span class="tech">Excel</span>
+      <span class="tech">Azure</span>
+      <span class="tech">Data Modeling</span>
+      <span class="tech">Git</span>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <section id="contact" class="contact-section">
   <div class="contact-card reveal">
-    <h2 class="contact-card-title">Let's work<br/>together.</h2>
-    <p class="contact-card-sub">Open to data analyst, BI developer, and analytics engineer roles. Always happy to discuss Power BI, DAX, or interesting datasets.</p>
+    <div class="section-kicker">Let's connect</div>
+    <h2>Good data.<br>Better decisions.</h2>
+    <p>
+      Open to data analyst, BI developer and analytics-focused opportunities.
+      I'm always interested in discussing Power BI, DAX, SQL and interesting datasets.
+    </p>
+
     <div class="contact-links">
-      <a href="mailto:yuan.gonzalez001@gmail.com" class="contact-link">✉ Email</a>
-      <a href="https://www.linkedin.com/in/your-profile" class="contact-link" target="_blank">in LinkedIn</a>
-      <a href="https://github.com/yuangp01" class="contact-link" target="_blank">⌥ GitHub</a>
-      <a href="https://yuangp01.wixsite.com/my-site-26" class="contact-link" target="_blank">↗ Portfolio</a>
+      <a href="mailto:yuan.gonzalez001@gmail.com" class="contact-link">Email</a>
+      <a href="https://www.linkedin.com/in/your-profile" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/yuangp01" class="contact-link" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://yuangp01.wixsite.com/my-site-26" class="contact-link" target="_blank" rel="noopener">Portfolio</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2025 Yuan Gonzalez</span>
-  <div class="footer-links">
-    <a href="https://github.com/yuangp01" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    <a href="mailto:yuan.gonzalez001@gmail.com">Email</a>
+  <div class="container footer-inner">
+    <span>© 2026 Yuan Gonzalez</span>
+
+    <div class="footer-links">
+      <a href="https://github.com/yuangp01" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:yuan.gonzalez001@gmail.com">Email</a>
+    </div>
   </div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add("visible"), index * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>
