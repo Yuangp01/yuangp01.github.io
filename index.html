@@ -1171,7 +1171,7 @@ footer {
           View My Work <span>→</span>
         </a>
 
-        <a href="./Yuan_Gonzalez_Resume.pdf" class="btn btn-secondary" download>
+        <a href="./Yuan_Gonzalez_Resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">
           <span>↓</span> Download Resume
         </a>
       </div>
@@ -1641,18 +1641,22 @@ recruiterContactForm.addEventListener("submit", async (event) => {
   contactFormSubmit.textContent = "Sending...";
 
   const formData = new FormData(recruiterContactForm);
+  const formObject = Object.fromEntries(formData.entries());
 
   try {
     const response = await fetch(recruiterContactForm.action, {
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: formData
+      body: JSON.stringify(formObject)
     });
 
-    if (!response.ok) {
-      throw new Error("Unable to submit the form.");
+    const result = await response.json();
+
+    if (!response.ok || result.success === false) {
+      throw new Error(result.message || "Unable to submit the form.");
     }
 
     contactFormStatus.className = "contact-form-status success";
@@ -1673,7 +1677,7 @@ recruiterContactForm.addEventListener("submit", async (event) => {
   } catch (error) {
     contactFormStatus.className = "contact-form-status error";
     contactFormStatus.textContent =
-      "Something went wrong. Please try again.";
+      error.message || "Something went wrong. Please try again.";
     contactFormSubmit.disabled = false;
     contactFormSubmit.textContent = "Send Message →";
   }
