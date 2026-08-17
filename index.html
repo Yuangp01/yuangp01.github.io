@@ -328,8 +328,8 @@ nav {
 }
 
 .value {
-  min-height: 120px;
-  padding: 25px 28px;
+  min-height: 150px;
+  padding: 26px 28px;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -368,14 +368,27 @@ nav {
 .value strong {
   display: block;
   font-size: 19px;
+  line-height: 1.15;
   letter-spacing: -.5px;
+  font-weight: 750;
 }
 
-.value span {
+.value-title {
   display: block;
+  margin-top: 5px;
+  color: #101828;
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 650;
+}
+
+.value-description {
+  display: block;
+  margin-top: 5px;
   color: #667085;
-  font-size: 11px;
-  margin-top: 4px;
+  font-size: 10.5px;
+  line-height: 1.45;
+  max-width: 180px;
 }
 
 /* SECTIONS */
@@ -898,12 +911,17 @@ footer {
   .value-grid { grid-template-columns: 1fr; }
 
   .value {
+    min-height: 120px;
+    padding: 22px 24px;
     border-right: 0;
     border-bottom: 1px solid rgba(16,24,40,.07);
-    min-height: 92px;
   }
 
   .value:last-child { border-bottom: 0; }
+
+  .value-description {
+    max-width: 260px;
+  }
 
   section { padding: 82px 0; }
 
@@ -933,6 +951,188 @@ footer {
     gap: 12px;
   }
 }
+
+/* Recruiter Contact Modal */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, .38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.contact-modal.open {
+  display: flex;
+}
+
+.contact-modal-card {
+  width: min(560px, 100%);
+  background: rgba(255,255,255,.98);
+  border: 1px solid rgba(15,23,42,.10);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(15,23,42,.18);
+  padding: 34px;
+  position: relative;
+  animation: contactModalIn .22s ease-out;
+}
+
+@keyframes contactModalIn {
+  from { opacity: 0; transform: translateY(12px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: #f5f7fa;
+  color: #172033;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.contact-modal-close:hover {
+  background: #e9edf3;
+  transform: rotate(5deg);
+}
+
+.contact-modal-kicker {
+  color: #1769ff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.contact-modal-title {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+}
+
+.contact-modal-subtitle {
+  margin: 0 0 24px;
+  color: #667085;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: grid;
+  gap: 15px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d9dee7;
+  border-radius: 13px;
+  background: #fff;
+  color: #172033;
+  padding: 13px 14px;
+  font: inherit;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #1769ff;
+  box-shadow: 0 0 0 4px rgba(23,105,255,.10);
+}
+
+.contact-form textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.contact-form-submit {
+  margin-top: 4px;
+  border: 0;
+  border-radius: 999px;
+  background: #1769ff;
+  color: #fff;
+  padding: 14px 22px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(23,105,255,.20);
+  transition: .2s ease;
+}
+
+.contact-form-submit:hover {
+  background: #0759e8;
+  transform: translateY(-1px);
+}
+
+.contact-form-submit:disabled {
+  opacity: .65;
+  cursor: wait;
+  transform: none;
+}
+
+.contact-form-status {
+  display: none;
+  border-radius: 13px;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contact-form-status.success {
+  display: block;
+  background: #ecfdf3;
+  color: #087443;
+}
+
+.contact-form-status.error {
+  display: block;
+  background: #fff1f0;
+  color: #b42318;
+}
+
+.contact-form-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 600px) {
+  .contact-modal {
+    padding: 14px;
+  }
+
+  .contact-modal-card {
+    padding: 27px 20px 22px;
+    border-radius: 22px;
+  }
+}
+
 </style>
 </head>
 
@@ -998,23 +1198,32 @@ footer {
         <div class="value-icon">▣</div>
         <div>
           <strong>2+</strong>
-          <span>Projects Built</span>
+          <span class="value-title">Featured Projects</span>
+          <span class="value-description">
+            Real-world analytics dashboards and applications
+          </span>
         </div>
       </div>
 
       <div class="value">
-        <div class="value-icon">&lt;/&gt;</div>
+        <div class="value-icon">▤</div>
         <div>
-          <strong>5+</strong>
-          <span>Core Skills</span>
+          <strong>1M+</strong>
+          <span class="value-title">Records Analyzed</span>
+          <span class="value-description">
+            Large-scale data exploration and transformation
+          </span>
         </div>
       </div>
 
       <div class="value">
-        <div class="value-icon">▥</div>
+        <div class="value-icon">⌘</div>
         <div>
-          <strong>Focused</strong>
-          <span>Power BI Expertise</span>
+          <strong>End-to-End</strong>
+          <span class="value-title">Data Workflow</span>
+          <span class="value-description">
+            From data collection and cleaning to insights and visualization
+          </span>
         </div>
       </div>
 
@@ -1022,7 +1231,10 @@ footer {
         <div class="value-icon">⌖</div>
         <div>
           <strong>FL, USA</strong>
-          <span>Based in Florida</span>
+          <span class="value-title">Based in Florida</span>
+          <span class="value-description">
+            Open to Data Analyst &amp; BI opportunities
+          </span>
         </div>
       </div>
 
@@ -1261,13 +1473,11 @@ footer {
       </p>
 
       <div class="contact-links">
-        <a href="mailto:yuan.gonzalez001@gmail.com" class="contact-link">Email</a>
-        <a href="https://www.linkedin.com/in/your-profile"
+        <a href="#" class="contact-link" id="openContactModal">Email</a>
+        <a href="https://www.linkedin.com/in/yuan-gonzalez"
            class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/yuangp01"
            class="contact-link" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://yuangp01.wixsite.com/my-site-26"
-           class="contact-link" target="_blank" rel="noopener">Portfolio</a>
       </div>
 
     </div>
@@ -1280,7 +1490,7 @@ footer {
 
     <div class="footer-links">
       <a href="https://github.com/yuangp01" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/yuan-gonzalez" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:yuan.gonzalez001@gmail.com">Email</a>
     </div>
   </div>
@@ -1297,6 +1507,177 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+
+
+<!-- Recruiter Contact Modal -->
+<div class="contact-modal" id="contactModal" aria-hidden="true">
+  <div class="contact-modal-card"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="contactModalTitle">
+
+    <button type="button"
+            class="contact-modal-close"
+            id="closeContactModal"
+            aria-label="Close contact form">×</button>
+
+    <div class="contact-modal-kicker">Let's connect</div>
+
+    <h2 class="contact-modal-title" id="contactModalTitle">
+      Send me a message.
+    </h2>
+
+    <p class="contact-modal-subtitle">
+      Have a role, project or opportunity in mind? Send me a message directly.
+      It will be delivered to <strong>yuan.gonzalez001@gmail.com</strong>.
+    </p>
+
+    <form
+      id="recruiterContactForm"
+      class="contact-form"
+      action="https://formsubmit.co/ajax/yuan.gonzalez001@gmail.com"
+      method="POST">
+
+      <input type="hidden" name="_subject"
+             value="New recruiter message from Yuan Gonzalez portfolio">
+
+      <input type="hidden" name="_template" value="table">
+
+      <input type="hidden" name="_captcha" value="true">
+
+      <label>
+        Your name
+        <input type="text"
+               name="name"
+               placeholder="John Smith"
+               autocomplete="name"
+               required>
+      </label>
+
+      <label>
+        Your email
+        <input type="email"
+               name="email"
+               placeholder="john@company.com"
+               autocomplete="email"
+               required>
+      </label>
+
+      <label>
+        Message
+        <textarea name="message"
+                  placeholder="Hi Yuan, I'd like to discuss..."
+                  required></textarea>
+      </label>
+
+      <!-- Spam honeypot -->
+      <input type="text"
+             name="_honey"
+             class="contact-form-honeypot"
+             tabindex="-1"
+             autocomplete="off">
+
+      <div class="contact-form-status" id="contactFormStatus"></div>
+
+      <button type="submit" class="contact-form-submit" id="contactFormSubmit">
+        Send Message →
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+const contactModal = document.getElementById("contactModal");
+const openContactModal = document.getElementById("openContactModal");
+const closeContactModal = document.getElementById("closeContactModal");
+const recruiterContactForm = document.getElementById("recruiterContactForm");
+const contactFormStatus = document.getElementById("contactFormStatus");
+const contactFormSubmit = document.getElementById("contactFormSubmit");
+
+function showContactModal() {
+  contactModal.classList.add("open");
+  contactModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    const firstInput = recruiterContactForm.querySelector("input[name='name']");
+    if (firstInput) firstInput.focus();
+  }, 50);
+}
+
+function hideContactModal() {
+  contactModal.classList.remove("open");
+  contactModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+openContactModal.addEventListener("click", (event) => {
+  event.preventDefault();
+  showContactModal();
+});
+
+closeContactModal.addEventListener("click", hideContactModal);
+
+contactModal.addEventListener("click", (event) => {
+  if (event.target === contactModal) {
+    hideContactModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && contactModal.classList.contains("open")) {
+    hideContactModal();
+  }
+});
+
+recruiterContactForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  contactFormStatus.className = "contact-form-status";
+  contactFormStatus.textContent = "";
+  contactFormSubmit.disabled = true;
+  contactFormSubmit.textContent = "Sending...";
+
+  const formData = new FormData(recruiterContactForm);
+
+  try {
+    const response = await fetch(recruiterContactForm.action, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json"
+      },
+      body: formData
+    });
+
+    if (!response.ok) {
+      throw new Error("Unable to submit the form.");
+    }
+
+    contactFormStatus.className = "contact-form-status success";
+    contactFormStatus.textContent =
+      "Message sent successfully. Thanks for reaching out!";
+
+    recruiterContactForm.reset();
+    contactFormSubmit.textContent = "Message Sent ✓";
+
+    setTimeout(() => {
+      hideContactModal();
+      contactFormStatus.className = "contact-form-status";
+      contactFormStatus.textContent = "";
+      contactFormSubmit.disabled = false;
+      contactFormSubmit.textContent = "Send Message →";
+    }, 2200);
+
+  } catch (error) {
+    contactFormStatus.className = "contact-form-status error";
+    contactFormStatus.textContent =
+      "Something went wrong. Please try again.";
+    contactFormSubmit.disabled = false;
+    contactFormSubmit.textContent = "Send Message →";
+  }
+});
 </script>
 
 </body>
